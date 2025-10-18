@@ -1,0 +1,21 @@
+parameterValues:
+- name: MaxSceneFile
+  value: L:/ArnoldTesting/3DSMaxArnoldTest.max
+- name: Frames
+  value: '0'
+- name: OutputFilePath
+  value: L:\ArnoldTesting
+- name: OutputFileFormat
+  value: .png
+- name: ImageWidth
+  value: 1280
+- name: ImageHeight
+  value: 720
+- name: deadline:targetTaskRunStatus
+  value: READY
+- name: deadline:maxFailedTasksCount
+  value: 20
+- name: deadline:maxRetriesPerTask
+  value: 5
+- name: deadline:priority
+  value: 50

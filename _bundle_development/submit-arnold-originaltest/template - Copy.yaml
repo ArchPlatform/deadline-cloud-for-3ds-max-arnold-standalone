@@ -1,0 +1,14 @@
+specificationVersion: 'jobtemplate-2023-09'
+name: Arnold Test Job
+steps:
+- name: ArnoldRender
+  script:
+    actions:
+      onRun:
+        command: bash
+        args: ['{{Task.File.Run}}']
+    embeddedFiles:
+    - name: Run
+      type: TEXT
+      data: |
+        export ARNOLD_PATHMAP=/mnt/lucid/ArnoldTesting/arnoldpathmap.json && /opt/arnold/7.3.4.1/bin/kick -i /mnt/lucid/ArnoldTesting/3DSMaxArnoldTest.ass -dw -o /mnt/lucid/ArnoldTesting/remote-linux-farm.png -set options.abort_on_license_fail false 

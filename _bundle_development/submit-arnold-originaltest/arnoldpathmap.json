@@ -1,0 +1,9 @@
+{
+    "linux": {
+        "L:/": "/media/lucidlink",
+        "C:/programdata/autodesk/applicationplugins/maxtoa_2024/ocio": "/opt/arnold/7.3.4.1/ocio",
+        "c:/programdata/autodesk/applicationplugins/maxtoa_2024/ocio": "/opt/arnold/7.3.4.1/ocio",
+        "C:/ProgramData/Autodesk/ApplicationPlugins/MAXtoA_2024/ocio": "/opt/arnold/7.3.4.1/ocio",
+        "C:/Program Files/Autodesk/3ds Max 2024/OSL": "/opt/arnold/7.3.4.1/osl"
+    }
+}

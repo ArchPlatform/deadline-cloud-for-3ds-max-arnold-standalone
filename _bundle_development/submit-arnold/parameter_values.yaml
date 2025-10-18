@@ -1,0 +1,25 @@
+parameterValues:
+- name: ArnoldSceneFile
+  value: L:/ArnoldTesting/3DSMaxArnoldTest.ass
+- name: ArnoldStandaloneInstallDirectory
+  value: /opt/arnold/7.3.4.1/
+- name: MaxVersion
+  value: 2024
+- name: Frames
+  value: '0-2'
+- name: OutputFilePath
+  value: L:\ArnoldTesting
+- name: OutputFileName
+  value: arnoldtest_####.png
+- name: ImageWidth
+  value: 1280
+- name: ImageHeight
+  value: 720
+- name: deadline:targetTaskRunStatus
+  value: READY
+- name: deadline:maxFailedTasksCount
+  value: 20
+- name: deadline:maxRetriesPerTask
+  value: 5
+- name: deadline:priority
+  value: 50
