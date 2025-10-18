@@ -18,6 +18,8 @@ RENDER_SUBMITTER_SETTINGS_FILE_EXT = ".deadline_render_settings.json"
 # Filename for backup created at submission
 TEMP_BACKUP_FILENAME = "max_backup_file.mx"
 
+ARNOLD_RENDERER = "Arnold"
+
 # Renderers currently supported by Deadline Cloud
 # Add new renderers to the README when adding to here
 ALLOWED_RENDERERS = [
@@ -29,6 +31,7 @@ ALLOWED_RENDERERS = [
     "V_Ray_7",
     "V_Ray_GPU_7",
     "Redshift_Renderer",
+    ARNOLD_RENDERER
 ]
 
 # Possible output extensions

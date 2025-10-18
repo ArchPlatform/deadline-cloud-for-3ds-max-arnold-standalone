@@ -177,6 +177,16 @@ class SceneSettingsWidget(QWidget):
         lyt.addWidget(QLabel("Renderer"), 5, 0)
         lyt.addWidget(self.renderers_box, 5, 1)
 
+        self.use_standalone_box = QCheckBox(self)
+        self.use_standalone_box.setChecked(True)
+        self.use_standalone_box.setEnabled(False)
+        self.use_standalone_box.setVisible(False)
+        self.use_standalone_box.setToolTip(
+            "Currently, only Arnold standalone is supported."
+        )
+        lyt.addWidget(QLabel("Use Standalone"), 6, 0)
+        lyt.addWidget(self.use_standalone_box, 6, 1)
+
         # Stereo Cameras selection
         self.stereo_cameras_box = QComboBox(self)
         # Checks for use and installation of the stereo camera plugin
@@ -196,14 +206,14 @@ class SceneSettingsWidget(QWidget):
         else:
             self.stereo_cameras_box.addItem("Disable Stereo Camera Submission", "None")
             self.stereo_cameras_box.setEnabled(False)
-        lyt.addWidget(QLabel("Stereo Cameras Selection"), 6, 0)
-        lyt.addWidget(self.stereo_cameras_box, 6, 1)
+        lyt.addWidget(QLabel("Stereo Cameras Selection"), 7, 0)
+        lyt.addWidget(self.stereo_cameras_box, 7, 1)
         self.stereo_cameras_box.currentIndexChanged.connect(self._fill_cameras_box)
 
         # Cameras to render selection
         self.cameras_box = QComboBox(self)
-        lyt.addWidget(QLabel("Cameras To Render"), 7, 0)
-        lyt.addWidget(self.cameras_box, 7, 1)
+        lyt.addWidget(QLabel("Cameras To Render"), 8, 0)
+        lyt.addWidget(self.cameras_box, 8, 1)
 
         # Override frame range
         self.frame_override_chck = QCheckBox("Override Frame Range", self)
@@ -212,8 +222,8 @@ class SceneSettingsWidget(QWidget):
             "Frame range you want to use as override. \n" "E.g. 1,3,5-10 or 1, 3, 5-10"
         )
         self.style_sheet = self.frame_override_txt.styleSheet()
-        lyt.addWidget(self.frame_override_chck, 8, 0)
-        lyt.addWidget(self.frame_override_txt, 8, 1)
+        lyt.addWidget(self.frame_override_chck, 9, 0)
+        lyt.addWidget(self.frame_override_txt, 9, 1)
         self.frame_override_chck.stateChanged.connect(self.activate_frame_override_changed)
 
         # Frame range validation
@@ -230,7 +240,7 @@ class SceneSettingsWidget(QWidget):
 
         # Scene tweaks group box
         self._build_scene_tweaks_ui()
-        lyt.addWidget(self.scene_tweaks_grp_box, 9, 0, 3, 5)
+        lyt.addWidget(self.scene_tweaks_grp_box, 10, 0, 3, 5)
 
         if self.developer_options:
             self.include_adaptor_wheels = QCheckBox(
