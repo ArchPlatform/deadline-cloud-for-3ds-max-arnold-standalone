@@ -34,14 +34,14 @@ if %ERRORLEVEL% neq 0 (
 )
 echo   ✓ max_submitter updated
 
-echo Updating max_shared files...
-xcopy /E /Y /I "%SOURCE_ROOT%\max_shared" "%DEST_ROOT%\max_shared"
-if %ERRORLEVEL% neq 0 (
-    echo ERROR: Failed to copy max_shared files
-    pause
-    exit /b 1
-)
-echo   ✓ max_shared updated
+@REM echo Updating max_shared files...
+@REM xcopy /E /Y /I "%SOURCE_ROOT%\max_shared" "%DEST_ROOT%\max_shared"
+@REM if %ERRORLEVEL% neq 0 (
+@REM     echo ERROR: Failed to copy max_shared files
+@REM     pause
+@REM     exit /b 1
+@REM )
+@REM echo   ✓ max_shared updated
 
 echo.
 echo === Update Complete ===
