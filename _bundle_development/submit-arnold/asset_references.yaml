@@ -2,10 +2,10 @@ assetReferences:
   inputs:
     directories: []
     filenames:
-    - L:\ArnoldTesting\3DSMaxArnoldTest.max
-    - L:\ArnoldTesting\local-test.png
+    - Y:\ArnoldTesting\3DSMaxArnoldTest.max
+    - Y:\ArnoldTesting\local-test.png
   outputs:
     directories:
-    - L:/ArnoldTesting/
-    - L:\ArnoldTesting
+    - Y:/ArnoldTesting/
+    - Y:\ArnoldTesting
   referencedPaths: []

@@ -1,14 +1,14 @@
 parameterValues:
 - name: ArnoldSceneFile
-  value: L:/ArnoldTesting/3DSMaxArnoldTest.ass
+  value: Y:\ArnoldTesting\3DSMaxArnoldTest.ass
 - name: ArnoldStandaloneInstallDirectory
-  value: /opt/arnold/7.3.4.1/
+  value: /opt/arnold/7.4.3.2/
 - name: MaxVersion
   value: 2024
 - name: Frames
   value: '0-2'
 - name: OutputFilePath
-  value: L:\ArnoldTesting
+  value: Y:\ArnoldTesting
 - name: OutputFileName
   value: arnoldtest_####.png
 - name: ImageWidth
