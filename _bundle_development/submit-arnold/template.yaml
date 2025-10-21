@@ -1,3 +1,7 @@
+# The following environment variables must be set in the queue environment:
+# ARNOLD_INSTALL_PATH
+# MAX_VERSION
+
 specificationVersion: jobtemplate-2023-09
 name: 3DSMaxArnoldTest
 description: null
@@ -74,52 +78,36 @@ parameterDefinitions:
   minValue: 1
   description: The image height of the output.
 steps:
-# - name: LucidWait
-#   script:
-#     actions:
-#       onRun:
-#         command: sleep
-#         args:
-#         - "7"
 - name: State01
   parameterSpace:
     taskParameterDefinitions:
     - name: Frame
       type: INT
       range: '{{Param.Frames}}'
-  stepEnvironments:
-  - name: Max/Arnold Pathmappings
-    description: Sets up Max to Arnold Standalone path mappings
-    # variables:
-    #   ARNOLD_PATHMAP: '{{Env.File.arnoldPathmap}}'
-    script:
-      actions:
-        onEnter:
-          command: echo
-          args:
-          - ARNOLD_PATHMAP={{Env.File.arnoldPathmap}}
-      embeddedFiles:
-      - name: arnoldPathmap
-        filename: arnoldPathmap.json
-        type: TEXT
-        data: |
-          {
-            "linux": {
-              "C:/programdata/autodesk/applicationplugins/maxtoa_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
-              "c:/programdata/autodesk/applicationplugins/maxtoa_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
-              "C:/ProgramData/Autodesk/ApplicationPlugins/MAXtoA_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
-              "C:/Program Files/Autodesk/3ds Max {{Param.MaxVersion}}/OSL": "{{Param.ArnoldStandaloneInstallDirectory}}/osl"
-            }
-          }
   script:
     actions:
       onRun:
-        command: "{{Param.ArnoldStandaloneInstallDirectory}}/bin/kick"
+        command: bash
         args:
-        - '-sl'
-        - '-i {{Param.ArnoldSceneFile}}'
-        - '-r {{Param.ImageWidth}} {{Param.ImageHeight}}'
-        - '-o {{Param.OutputFilePath}}/{{Task.Param.Frame}}.{{Param.OutputFileName}}'
-        - '-frame {{Task.Param.Frame}}'
+        - "{{Task.File.run_render}}"
         cancelation:
           mode: NOTIFY_THEN_TERMINATE
+    embeddedFiles:
+    - name: arnoldPathmap
+      filename: arnoldPathmap.json
+      type: TEXT
+      data: |
+        {
+          "linux": {
+            "C:/programdata/autodesk/applicationplugins/maxtoa_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
+            "c:/programdata/autodesk/applicationplugins/maxtoa_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
+            "C:/ProgramData/Autodesk/ApplicationPlugins/MAXtoA_{{Param.MaxVersion}}/ocio": "{{Param.ArnoldStandaloneInstallDirectory}}/ocio",
+            "C:/Program Files/Autodesk/3ds Max {{Param.MaxVersion}}/OSL": "{{Param.ArnoldStandaloneInstallDirectory}}/osl"
+          }
+        }
+    - name: run_render
+      filename: run_render.sh
+      type: TEXT
+      data: |
+        export ARNOLD_PATHMAP={{Task.File.arnoldPathmap}}
+        {{Param.ArnoldStandaloneInstallDirectory}}/bin/kick -sl -i {{Param.ArnoldSceneFile}} -r {{Param.ImageWidth}} {{Param.ImageHeight}} -o {{Param.OutputFilePath}}/{{Task.Param.Frame}}.{{Param.OutputFileName}} -frame {{Task.Param.Frame}}
